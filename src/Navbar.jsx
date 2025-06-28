@@ -27,6 +27,7 @@ function Navbar() {
         <li><a href="/faqs">FAQs</a></li>
         <li><a href="/contact">Contact Us</a></li>
         <li><a href="/about">About</a></li>
+        
       </ul>
     </nav>
   );

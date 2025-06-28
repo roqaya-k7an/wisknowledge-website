@@ -26,17 +26,17 @@ function Home() {
           className="poster-img"
         />
         <img
-          src="/poster1.jpe2.jpeg"
+          src="/abroad.jpeg"
           alt="Poster 2"
           className="poster-img"
         />
         <img
-          src="/poster1.jpe3.jpeg"
+          src="/ab.jpeg"
           alt="Poster 3"
           className="poster-img"
         />
         <img
-          src="/poster1.jpeg4.jpeg"
+          src="/summer.jpeg"
           alt="Poster 4"
           className="poster-img"
         />
