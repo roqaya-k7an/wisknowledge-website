@@ -1,30 +1,58 @@
+// src/components/About.jsx
 import React from "react";
-import "../App.css"; // for shared background styles
+import { FaCheckCircle } from "react-icons/fa";
+import "./About.css";
 
-function About() {
+export default function About() {
   return (
-    <div className="about-page-wrapper">
-      <div className="about-banner">
-        <h1 className="about-heading">About WisKnowledge</h1>
+    <section className="about-grid-section" id="about">
+      <div className="about-grid-header">
+        <h2>About WisKnowledge</h2>
+        <p>
+          Discover our identity, vision, and mission — all aligned to help learners and innovators grow with clarity.
+        </p>
       </div>
 
-      <div className="about-content">
-        <h2>Who We Are</h2>
-        <p>
-WisKnowledge is a service-oriented startup offering smart solutions for individuals and businesses. Our tagline, 'Knowledge with Wisdom,' captures our mission to provide value-driven consultancy services. We specialize in IELTS coaching, study abroad and visa consultancy, website development, and digital marketing services.        </p>
+      <div className="about-grid-container">
+        {/* WHO WE ARE */}
+        <div className="about-box">
+          <h3>Who We Are</h3>
+          <p>
+            WisKnowledge is a forward-thinking consultancy offering educational and digital solutions. We specialize in IELTS coaching, spoken English, study abroad guidance, and strategic branding services — all with clarity, quality, and care.
+          </p>
+        </div>
 
-        <h2>Our Vision</h2>
-        <p>
-To become a trusted global service provider that empowers clients through insightful strategies, skill-building, and digital solutions.        </p>
+        {/* OUR VISION */}
+        <div className="about-box">
+          <h3>Our Vision</h3>
+          <p>
+            To become a trusted global hub where learners and innovators grow through wisdom, skill, and strategic support. We aim to empower futures by bridging clarity and confidence.
+          </p>
+        </div>
 
-        <h2>Our Mission</h2>
-        <p>
-- Deliver impactful IELTS and overseas consultancy services.<br />
-- Provide tailored tech and marketing solutions to startups and SMEs.<br />
-- Enable clients to achieve sustainable growth through innovation and expertise.        </p>
+        {/* OUR MISSION */}
+        <div className="about-box">
+          <h3>Our Mission</h3>
+          <ul className="mission-list">
+            <li>
+              <FaCheckCircle className="tick-icon" />
+              Deliver top-tier IELTS and communication training.
+            </li>
+            <li>
+              <FaCheckCircle className="tick-icon" />
+              Provide transparent study abroad consulting.
+            </li>
+            <li>
+              <FaCheckCircle className="tick-icon" />
+              Support startups with digital branding and tools.
+            </li>
+            <li>
+              <FaCheckCircle className="tick-icon" />
+              Inspire growth through knowledge and action.
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default About;

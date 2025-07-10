@@ -1,16 +1,32 @@
-.nav {
+.navbar {
+  position: fixed;
+  top: 0;
   width: 100%;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(44, 66, 146, 0.06);
+  z-index: 1000;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: center;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  background: rgba(0, 0, 0, 0.3); /* Semi-transparent royal blue */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar.scrolled {
+  background: #ffffff;
+  backdrop-filter: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-content {
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  font-family: "Segoe UI", Arial, sans-serif;
-  position: relative;
-  z-index: 10;
 }
 
+/* === Logo Section === */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -18,66 +34,92 @@
 }
 
 .nav-logo-img {
-  height: 36px;
-  width: 36px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
+/* === Title === */
 .nav-title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #234292;
+  color: white;
+  white-space: nowrap;
 }
 
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #234292;
+.navbar.scrolled .nav-title {
+  color: #3c65c5; /* Light blue on scroll */
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-
+/* === Links === */
 .nav-links a {
+  color: #ffffff;
   text-decoration: none;
-  color: #234292;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: color 0.2s;
+  margin-left: 20px;
+  font-weight: 580;
+    font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.navbar.scrolled .nav-links a {
+  color: #3c65c5; /* Light blue links on scroll */
 }
 
 .nav-links a:hover {
-  color: #5478d2;
+  color: #3c65c5;
 }
 
-/* Mobile Responsive */
+/* === Hamburger toggle hidden by default === */
+.nav-toggle {
+  display: none;
+}
+
+/* === Mobile Menu Fix (Perfect Centered Full Width) === */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .navbar.scrolled .nav-toggle {
+    color: #234292;
   }
 
   .nav-links {
     display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background: #fff;
-    width: 100%;
     flex-direction: column;
-    gap: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 100vw; /* ✅ Full screen width */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: rgba(158, 153, 182, 0.48); /* ✅ Crystal effect */
+    backdrop-filter: blur(15px);
+    border-radius: 0 0 12px 12px;
+    padding: 8px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 999;
   }
 
   .nav-links.active {
     display: flex;
+  }
+
+  .nav-links a {
+    padding: 14px 0;
+    text-align: left;
+    width: 100%;
+    font-size: 1.21rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+  }
+
+  .navbar.scrolled .nav-links a {
+    color: #234292;
   }
 }

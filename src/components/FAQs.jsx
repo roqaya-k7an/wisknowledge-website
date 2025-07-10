@@ -1,5 +1,7 @@
-import React from "react";
-import "../App.css";
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "./FAQs.css";
 
 const faqs = [
   {
@@ -46,17 +48,37 @@ const faqs = [
 
 
 export default function FAQs() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
+  const toggleFAQ = (index) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
-    <div className="faq-bg">
-      <h2 className="faq-title">Frequently Asked Questions</h2>
-      <div className="faq-container">
+    <section className="faq-section" id="faqs">
+      <h2 className="faq-title" data-aos="fade-down">Frequently Asked Questions</h2>
+      <div className="faq-list" data-aos="fade-up">
         {faqs.map((item, index) => (
-          <div className="faq-item" key={index}>
-            <h3 className="faq-question">{item.question}</h3>
-            <p className="faq-answer">{item.answer}</p>
+          <div
+            key={index}
+            className={`faq-item ${activeIndex === index ? "active" : ""}`}
+          >
+            <div className="faq-question" onClick={() => toggleFAQ(index)}>
+              {item.question}
+              <span className="faq-toggle-icon">
+                {activeIndex === index ? "−" : "+"}
+              </span>
+            </div>
+            <div className="faq-answer-wrapper">
+              <div className="faq-answer">{item.answer}</div>
+            </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

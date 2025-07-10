@@ -1,52 +1,206 @@
-.footer {
-  width: 100%;
-  background: #f9f9f9;
-  border-top: 2px solid #e0e0e0;
-  padding: 20px 30px;
+/* ==== General Footer Style ==== */
+.wk-footer {
+  background: #234292;
+  color: #F1F1F1;
+  padding: 60px 30px 30px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ==== Footer Container ==== */
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  text-align: left;
+}
+
+/* ==== Footer Columns ==== */
+.footer-col {
+  flex: 1 1 280px;
+  min-width: 240px;
+}
+
+.footer-col.nav-col {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 14px;
-  color: #234292;
-  box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.04);
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.footer-left {
-  flex: 1;
-  min-width: 250px;
-  line-height: 1.6;
+.footer-col.nav-col .footer-nav {
+  width: 100%;
+  text-align: left;
 }
 
-.footer-left a {
-  color: #234292;
+.footer-col.services-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-col.services-col .footer-nav {
+  text-align: left;
+}
+
+/* ==== Brand Styling ==== */
+.footer-brand {
+  font-size: 1.8rem;
+  color: #A9D5FF;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-tagline {
+  font-size: 1rem;
+  color: #E2E8F0;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* ==== Section Headings ==== */
+.footer-heading {
+  font-size: 1.2rem;
+  color: #F1F1F1;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* ==== Navigation & Service Links ==== */
+.footer-nav a {
+  display: block;
+  color: #A9D5FF;
+  margin-bottom: 10px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.footer-left a:hover {
+.footer-nav a:hover {
+  color: #33BFA3;
   text-decoration: underline;
 }
 
-.footer-right {
-  color: #888;
-  font-size: 13px;
-  text-align: right;
-  min-width: 180px;
-  margin-top: 10px;
+/* ==== Contact Icons ==== */
+.footer-icon {
+  margin-right: 8px;
+  color: #33BFA3;
 }
 
-@media (max-width: 768px) {
-  .footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 16px 12px;
+/* ==== Social Icons ==== */
+.footer-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.footer-social a {
+  font-size: 1.2rem;
+  color: #A9D5FF;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background-color: #33BFA3;
+  color: white;
+}
+
+/* ==== Contact Lines ==== */
+.footer-col p {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  word-break: break-word;
+  font-size: 0.95rem;
+}
+
+/* ==== Footer Bottom Bar ==== */
+.footer-bottom {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #E2E8F0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+@media (min-width: 768px) {
+  /* Fix layout for Our Services column on desktop */
+  .footer-col.nav-col:last-child {
+    align-items: flex-start !important;
   }
 
-  .footer-right {
-    text-align: center;
+  .footer-col.nav-col:last-child .footer-nav {
+    padding-left: 0;
     margin-top: 4px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .footer-col.nav-col:last-child .footer-nav a {
+    display: block;
+    margin-left: 0;
+    text-align: left;
+  }
+ 
+  .footer-col.nav-col {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+
+
+  .footer-col {
+    width: 100%;
+    margin-bottom: -19px;
+  }
+
+  .footer-social {
+    justify-content: flex-start;
+  }
+
+  .footer-nav a {
+    margin: 6px 0;
+  }
+
+  .footer-col.nav-col,
+  .footer-col.services-col {
+    align-items: flex-start;
+  }
+
+  .footer-col p {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+/* Desktop-only: center the middle (Quick Links) column */
+@media (min-width: 992px) {
+  .footer-col.nav-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col.nav-col .footer-nav {
+    text-align: left;
+  }
+}
+@media (min-width: 992px) {
+  .footer-col.nav-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col.nav-col .footer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* ✅ Center the links */
+    text-align: center;   /* ✅ Center text inside links */
+  }
+
+  .footer-col.nav-col .footer-nav a {
+    width: 100%;
   }
 }

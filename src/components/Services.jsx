@@ -1,95 +1,86 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { FaCalendarAlt, FaChalkboardTeacher, FaBook, FaChild } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "./Services.css";
+
+// WhatsApp base link
+const whatsappLink = "https://wa.me/923369859980?text=";
 
 const services = [
   {
-    title: "IELTS Preparation",
-    image: "/poster1.jpeg5.jpeg",
-    description:
-      "Expert-led classes to help you achieve your IELTS band. Includes tests, materials, and speaking practice.",
-    duration: "Flexible",
-    special: "Discount for early registration!",
-    button: {
-      text: "Register via WhatsApp",
-      link: "https://wa.me/923369859980",
-    },
+    title: "IELTS Coaching",
+    duration: "4 weeks",
+    days: "Mon – Thursday",
+    icon: <FaBook />,
   },
   {
     title: "Spoken English",
-    image: "/poster1.jpeg",
-    description:
-      "Boost your fluency for life, work, and study. Friendly, interactive sessions.",
-    duration: "Flexible",
-    special: "",
-    button: {
-      text: "Register via WhatsApp",
-      link: "https://wa.me/923369859980",
-    },
+    duration: "90 days",
+    days: "Mon – Thursday",
+    icon: <FaChalkboardTeacher />,
   },
   {
-    title: "Summer Camp",
-    image: "/summer.jpeg",
-    description:
-      "Ages 7–18 | June & July | 10 am – 2 pm | IIUI New Campus. Activities: English, games, competitions, confidence building, and more.",
-    duration: "2 Months (June & July)",
-    special: "Discount for early registration!",
-    button: {
-      text: "Register via WhatsApp",
-      link: "https://wa.me/923369859980",
-    },
+    title: "Strategic Study Management Workshop",
+    duration: "One or two days",
+    days: null,
+    icon: <FaCalendarAlt />,
   },
   {
-    title: "Study Abroad Support",
-    image: "/study abroad.jpeg",
-    description:
-      "Free expert counseling for UK, USA, Canada, Australia, Europe & UAE. Admission, visa, documents & more.",
-    duration: "On demand",
-    special: "100% Free Consultation!",
-    button: {
-      text: "Contact via WhatsApp",
-      link: "https://wa.me/923369859980",
-    },
+    title: "Strategic Summer Camp for Kids",
+    duration: "2 weeks or 20 days",
+    days: "June, July",
+    icon: <FaChild />,
   },
 ];
 
 export default function Services() {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
   return (
-<div className="min-h-screen w-full bg-gradient-to-br from-blue-100 to-blue-400 pt-4 pb-10 px-2 flex flex-col items-center">
-      {/* Banner */}
-      <div className="services-banner"></div>
-
-      {/* Title & Intro */}
-<h1 className="services-title mt-4">Our Services</h1> 
-      <p className="services-subtitle">
-  Boost your language skills or study abroad, Register easily via WhatsApp!
-</p>
-
-
-      {/* Services Grid */}
-      <div className="services-grid">
-        {services.map((service) => (
-    <div className="services-card" key={service.title}>
-            <img
-              src={service.image}
-              alt={service.title}
-              className="services-img"
-            />
-            <div className="services-name">{service.title}</div>
-            <div className="services-desc">{service.description}</div>
-            <div className="services-info">{service.duration}</div>
-            {service.special && (
-              <div className="services-discount">{service.special}</div>
-            )}
-            <a
-              href={service.button.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="services-whatsapp-btn"
-            >
-              {service.button.text}
-            </a>
-          </div>
-        ))}
+    <section className="services-wrapper" id="services">
+      <div className="services-intro">
+        <h2 className="services-heading" data-aos="fade-down">Shape Your Future with Confidence</h2>
+        <p className="services-subheading" data-aos="fade-up">
+          Join programs that empower you with real skills, global language fluency, and a mindset for success.
+        </p>
       </div>
-    </div>
+
+      <div className="services-container">
+        {services.map((service, index) => {
+          const message = encodeURIComponent(
+            `Hello, I’m interested in ${service.title}. Please share more details.`
+          );
+          const fullLink = `${whatsappLink}${message}`;
+
+          return (
+            <div
+              className="service-box"
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
+            >
+              <div className="icon-circle">{service.icon}</div>
+              <h3 className="service-title">{service.title}</h3>
+              <ul className="service-details">
+                <li><strong>Duration:</strong> {service.duration}</li>
+                {service.days && <li><strong>Days:</strong> {service.days}</li>}
+                <li><strong>Discount:</strong> 50% for IIUI Community</li>
+              </ul>
+              <a
+                href={fullLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="service-btn"
+              >
+                Get Started
+              </a>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }
