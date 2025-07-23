@@ -62,6 +62,7 @@ export default function Footer() {
       <div className="footer-bottom">
         ©️ 2025 WisKnowledge Consultancy. All rights reserved.
       </div>
+      
     </footer>
   );
 }
