@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
-// Optional: add performance reporting or monitoring (e.g., Google Analytics, Sentry)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

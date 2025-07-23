@@ -54,7 +54,7 @@
 }
 
 .faq-item.active .faq-answer-wrapper {
-  max-height: 400px; /* large enough to fit any answer */
+  max-height: 400px; 
 }
 
 .faq-answer {
