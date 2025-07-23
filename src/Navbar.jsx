@@ -18,15 +18,29 @@ const Navbar = () => {
     <header className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <div className="navbar-content">
         <div className="nav-logo">
-          <img src="/logo.jpeg" alt="Logo" className="nav-logo-img" />
+          <img 
+            src="/logo.jpeg" 
+            alt="WisKnowledge Training Center Logo" 
+            className="nav-logo-img" 
+            loading="lazy" 
+          />
           <h1 className="nav-title">WisKnowledge</h1>
         </div>
 
-        <button className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <button 
+          className="nav-toggle" 
+          onClick={() => setMenuOpen(!menuOpen)} 
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        >
           ☰
         </button>
 
-        <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <nav 
+          className={`nav-links ${menuOpen ? "active" : ""}`} 
+          role="navigation" 
+          aria-label="Primary"
+        >
           <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
           <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
           <a href="#trainers" onClick={() => setMenuOpen(false)}>Trainers</a>

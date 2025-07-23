@@ -4,7 +4,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Services.css";
 
-// Google Form link
 const formLink = "https://forms.gle/ZxfQqUs7SpBwBJ4L6";
 
 const services = [
@@ -12,25 +11,25 @@ const services = [
     title: "IELTS Coaching",
     duration: "4 weeks",
     days: "Mon – Thursday",
-    icon: <FaBook />,
+    icon: <FaBook aria-hidden="true" />,
   },
   {
     title: "Spoken English",
     duration: "90 days",
     days: "Mon – Thursday",
-    icon: <FaChalkboardTeacher />,
+    icon: <FaChalkboardTeacher aria-hidden="true" />,
   },
   {
     title: "Strategic Study Management Workshop",
     duration: "One or two days",
     days: null,
-    icon: <FaCalendarAlt />,
+    icon: <FaCalendarAlt aria-hidden="true" />,
   },
   {
     title: "Strategic Summer Camp for Kids",
     duration: "2 weeks or 20 days",
     days: "June, July",
-    icon: <FaChild />,
+    icon: <FaChild aria-hidden="true" />,
   },
 ];
 
@@ -52,17 +51,21 @@ export default function Services() {
 
       <div className="services-container">
         {services.map((service, index) => (
-          <div
+          <article
             className="service-box"
             key={index}
             data-aos="fade-up"
             data-aos-delay={index * 150}
+            itemScope
+            itemType="https://schema.org/Course"
           >
             <div className="icon-circle">{service.icon}</div>
-            <h3 className="service-title">{service.title}</h3>
+            <h3 className="service-title" itemProp="name">{service.title}</h3>
             <ul className="service-details">
-              <li><strong>Duration:</strong> {service.duration}</li>
-              {service.days && <li><strong>Days:</strong> {service.days}</li>}
+              <li><strong>Duration:</strong> <span itemProp="duration">{service.duration}</span></li>
+              {service.days && (
+                <li><strong>Days:</strong> <span itemProp="timeRequired">{service.days}</span></li>
+              )}
               <li><strong>Discount:</strong> 50% for IIUI Community</li>
             </ul>
             <a
@@ -70,10 +73,11 @@ export default function Services() {
               target="_blank"
               rel="noopener noreferrer"
               className="service-btn"
+              itemProp="url"
             >
               Get Started
             </a>
-          </div>
+          </article>
         ))}
       </div>
     </section>

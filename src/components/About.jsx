@@ -5,53 +5,53 @@ import "./About.css";
 
 export default function About() {
   return (
-    <section className="about-grid-section" id="about">
-      <div className="about-grid-header">
-        <h2>About WisKnowledge</h2>
+    <section className="about-grid-section" id="about" aria-labelledby="about-heading">
+      <header className="about-grid-header">
+        <h2 id="about-heading">About WisKnowledge</h2>
         <p>
           Discover our identity, vision, and mission — all aligned to help learners and innovators grow with clarity.
         </p>
-      </div>
+      </header>
 
       <div className="about-grid-container">
         {/* WHO WE ARE */}
-        <div className="about-box">
-          <h3>Who We Are</h3>
+        <article className="about-box" aria-labelledby="who-we-are-heading">
+          <h3 id="who-we-are-heading">Who We Are</h3>
           <p>
             WisKnowledge is a forward-thinking consultancy offering educational and digital solutions. We specialize in IELTS coaching, spoken English, study abroad guidance, and strategic branding services — all with clarity, quality, and care.
           </p>
-        </div>
+        </article>
 
         {/* OUR VISION */}
-        <div className="about-box">
-          <h3>Our Vision</h3>
+        <article className="about-box" aria-labelledby="our-vision-heading">
+          <h3 id="our-vision-heading">Our Vision</h3>
           <p>
             To become a trusted global hub where learners and innovators grow through wisdom, skill, and strategic support. We aim to empower futures by bridging clarity and confidence.
           </p>
-        </div>
+        </article>
 
         {/* OUR MISSION */}
-        <div className="about-box">
-          <h3>Our Mission</h3>
+        <article className="about-box" aria-labelledby="our-mission-heading">
+          <h3 id="our-mission-heading">Our Mission</h3>
           <ul className="mission-list">
             <li>
-              <FaCheckCircle className="tick-icon" />
-              Deliver top-tier IELTS and communication training.
+              <FaCheckCircle className="tick-icon" aria-hidden="true" />
+              <span>Deliver top tier IELTS and communication training.</span>
             </li>
             <li>
-              <FaCheckCircle className="tick-icon" />
-              Provide transparent study abroad consulting.
+              <FaCheckCircle className="tick-icon" aria-hidden="true" />
+              <span>Provide transparent study abroad consulting.</span>
             </li>
             <li>
-              <FaCheckCircle className="tick-icon" />
-              Support startups with digital branding and tools.
+              <FaCheckCircle className="tick-icon" aria-hidden="true" />
+              <span>Support startups with digital branding and tools.</span>
             </li>
             <li>
-              <FaCheckCircle className="tick-icon" />
-              Inspire growth through knowledge and action.
+              <FaCheckCircle className="tick-icon" aria-hidden="true" />
+              <span>Inspire growth through knowledge and action.</span>
             </li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
   );

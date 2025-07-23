@@ -46,7 +46,6 @@ const faqs = [
   },
 ];
 
-
 export default function FAQs() {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -66,14 +65,31 @@ export default function FAQs() {
           <div
             key={index}
             className={`faq-item ${activeIndex === index ? "active" : ""}`}
+            role="region"
+            aria-labelledby={`faq-question-${index}`}
           >
-            <div className="faq-question" onClick={() => toggleFAQ(index)}>
+            <div
+              id={`faq-question-${index}`}
+              className="faq-question"
+              onClick={() => toggleFAQ(index)}
+              tabIndex={0}
+              role="button"
+              aria-expanded={activeIndex === index}
+              aria-controls={`faq-answer-${index}`}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") toggleFAQ(index);
+              }}
+            >
               {item.question}
-              <span className="faq-toggle-icon">
+              <span className="faq-toggle-icon" aria-hidden="true">
                 {activeIndex === index ? "−" : "+"}
               </span>
             </div>
-            <div className="faq-answer-wrapper">
+            <div
+              id={`faq-answer-${index}`}
+              className="faq-answer-wrapper"
+              style={{ display: activeIndex === index ? "block" : "none" }}
+            >
               <div className="faq-answer">{item.answer}</div>
             </div>
           </div>

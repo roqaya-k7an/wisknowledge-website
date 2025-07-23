@@ -21,14 +21,19 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 6500); 
+    }, 6500);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="hero-wrapper">
-      <img src={slides[current].image} alt="slide" className="hero-bg" />
-      <div className="hero-overlay" />
+    <section className="hero-wrapper" aria-label="Motivational Slide Show">
+      <img
+        src={slides[current].image}
+        alt={`Inspirational Slide ${current + 1}`}
+        className="hero-bg"
+        loading="lazy"
+      />
+      <div className="hero-overlay" aria-hidden="true" />
 
       <div className="hero-content">
         <AnimatePresence mode="wait">
@@ -44,12 +49,13 @@ export default function Home() {
           </motion.h1>
         </AnimatePresence>
 
-       <motion.a
+        <motion.a
           href="#services"
           className="hero-btn"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
+          aria-label="Explore our services section"
         >
           Explore Services
         </motion.a>
