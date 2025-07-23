@@ -126,8 +126,23 @@
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-col.quick-links {
+  transform: translateX(40%); /* Adjust this value as needed (try 10%, 15%, or 20%) */
+}
+
+/* Responsive Fixes */
 @media (min-width: 768px) {
-  /* Fix layout for Our Services column on desktop */
+  .footer-col.nav-col {
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .footer-col.nav-col:last-child {
     align-items: flex-start !important;
   }
@@ -144,13 +159,6 @@
     margin-left: 0;
     text-align: left;
   }
- 
-  .footer-col.nav-col {
-    align-items: flex-start;
-    text-align: left;
-  }
-
-
 
   .footer-col {
     width: 100%;
@@ -165,42 +173,28 @@
     margin: 6px 0;
   }
 
-  .footer-col.nav-col,
-  .footer-col.services-col {
-    align-items: flex-start;
-  }
-
   .footer-col p {
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
   }
 }
-/* Desktop-only: center the middle (Quick Links) column */
-@media (min-width: 992px) {
-  .footer-col.nav-col {
-    align-items: center;
-    text-align: center;
-  }
 
-  .footer-col.nav-col .footer-nav {
-    text-align: left;
-  }
-}
 @media (min-width: 992px) {
   .footer-col.nav-col {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start !important;
+    text-align: left !important;
   }
 
   .footer-col.nav-col .footer-nav {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* ✅ Center the links */
-    text-align: center;   /* ✅ Center text inside links */
+    align-items: flex-start;
+    text-align: left;
   }
 
   .footer-col.nav-col .footer-nav a {
     width: 100%;
+    text-align: left;
   }
 }
