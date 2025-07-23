@@ -14,14 +14,13 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-// 🔁 Add this:
-import AOSRefresher from "./components/AOSRefresher"; // ✅ adjust path if needed
+import AOSRefresher from "./components/AOSRefresher"; 
 
 function App() {
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: false, // Allow repeat animation
+      once: false,
       offset: 80,
     });
   }, []);
@@ -62,7 +61,6 @@ function App() {
 
       <Footer />
 
-      {/* 🔁 AOS refresher to re-trigger animations */}
       <AOSRefresher />
     </div>
   );

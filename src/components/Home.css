@@ -16,7 +16,6 @@ body {
   overflow: hidden;
 }
 
-/* Background */
 .hero-bg {
   position: absolute;
   width: 100%;
@@ -26,17 +25,15 @@ body {
   z-index: 1;
 }
 
-/* Overlay */
 .hero-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent royal blue */
+  background: rgba(0, 0, 0, 0.7); 
   backdrop-filter: blur(2px);
   z-index: 2;
 }
 
-/* Content */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -49,7 +46,6 @@ body {
   text-align: center;
 }
 
-/* Motivational Title */
 .hero-title {
   color: #fff;
   font-size: 1.8rem;
@@ -60,7 +56,6 @@ body {
   margin-bottom: 28px;
 }
 
-/* Button */
 .hero-btn {
   background: #ffffff;
   color: #234292;
@@ -77,7 +72,6 @@ body {
   color: #ffffff;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 1.25rem;

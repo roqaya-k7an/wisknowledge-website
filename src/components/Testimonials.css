@@ -76,7 +76,6 @@
 .testimonial-cta:hover {
   background: #128C7E;
 }
-/* Desktop layout: one tall card left, two stacked right */
 @media (min-width: 992px) {
   .testimonials-container {
     display: grid;
@@ -108,7 +107,6 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .testimonials-title {
     font-size: 2rem;

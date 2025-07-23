@@ -53,7 +53,7 @@ export default function Contact() {
 
           <a
             className="contact-card"
-            href="https://facebook.com/share/p/1BDy4Ccx2Z"
+            href="https://www.facebook.com/profile.php?id=100090947373976"
             target="_blank"
             rel="noopener noreferrer"
           >

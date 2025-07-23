@@ -13,7 +13,6 @@ export default function Footer() {
   return (
     <footer className="wk-footer" id="footer">
       <div className="footer-content">
-        {/* Left Column: Brand */}
         <div className="footer-col brand-col">
           <h3 className="footer-brand">WisKnowledge</h3>
           <p className="footer-tagline">
@@ -25,9 +24,10 @@ export default function Footer() {
           <p><FaEnvelope className="footer-icon" /> wisknowledgeconsultancy@gmail.com</p>
           <p><FaPhone className="footer-icon" /> +92 336 9859980</p>
           <div className="footer-social">
-            <a href="https://www.facebook.com/share/p/1BDy4Ccx2Z/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
-              <FaFacebookF />
-            </a>
+            <a href="https://www.facebook.com/profile.php?id=100090947373976" target="_blank" rel="noopener noreferrer">
+  <FaFacebookF />
+</a>
+
             <a href="https://www.instagram.com/wisknowledge_consultancy" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
             </a>
@@ -36,8 +36,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
-        {/* Center Column: Quick Links */}
         <div className="footer-col nav-col quick-links">
           <h4 className="footer-heading">Quick Links</h4>
           <div className="footer-nav">
@@ -50,8 +48,6 @@ export default function Footer() {
             <a href="#contact">Contact</a>
           </div>
         </div>
-
-        {/* Right Column: Our Services */}
         <div className="footer-col nav-col services-col">
           <h4 className="footer-heading">Our Services</h4>
           <div className="footer-nav">

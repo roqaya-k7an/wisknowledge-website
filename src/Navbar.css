@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
-  background: rgba(0, 0, 0, 0.3); /* Semi-transparent royal blue */
+  background: rgba(0, 0, 0, 0.3); 
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -26,7 +26,6 @@
   justify-content: space-between;
 }
 
-/* === Logo Section === */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -40,7 +39,6 @@
   object-fit: cover;
 }
 
-/* === Title === */
 .nav-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -49,10 +47,9 @@
 }
 
 .navbar.scrolled .nav-title {
-  color: #3c65c5; /* Light blue on scroll */
+  color: #3c65c5; 
 }
 
-/* === Links === */
 .nav-links a {
   color: #ffffff;
   text-decoration: none;
@@ -63,19 +60,17 @@
 }
 
 .navbar.scrolled .nav-links a {
-  color: #3c65c5; /* Light blue links on scroll */
+  color: #3c65c5; 
 }
 
 .nav-links a:hover {
   color: #3c65c5;
 }
 
-/* === Hamburger toggle hidden by default === */
 .nav-toggle {
   display: none;
 }
 
-/* === Mobile Menu Fix (Perfect Centered Full Width) === */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
@@ -94,11 +89,11 @@
   .nav-links {
     display: none;
     flex-direction: column;
-    width: 100vw; /* ✅ Full screen width */
+    width: 100vw; 
     position: absolute;
     top: 70px;
     left: 0;
-    background: rgba(158, 153, 182, 0.48); /* ✅ Crystal effect */
+    background: rgba(158, 153, 182, 0.48); 
     backdrop-filter: blur(15px);
     border-radius: 0 0 12px 12px;
     padding: 8px 0;

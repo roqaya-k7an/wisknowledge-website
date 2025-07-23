@@ -56,7 +56,7 @@ export default function Testimonials() {
         rel="noopener noreferrer"
         data-aos="fade-up"
       >
-        Start Your Success Story — Contact Us on WhatsApp 📲
+        Start Your Success Story — Contact Us on WhatsApp 
       </a>
     </section>
   );

@@ -4,8 +4,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Services.css";
 
-// WhatsApp base link
-const whatsappLink = "https://wa.me/923369859980?text=";
+// Google Form link
+const formLink = "https://forms.gle/ZxfQqUs7SpBwBJ4L6";
 
 const services = [
   {
@@ -42,44 +42,39 @@ export default function Services() {
   return (
     <section className="services-wrapper" id="services">
       <div className="services-intro">
-        <h2 className="services-heading" data-aos="fade-down">Shape Your Future with Confidence</h2>
+        <h2 className="services-heading" data-aos="fade-down">
+          Shape Your Future with Confidence
+        </h2>
         <p className="services-subheading" data-aos="fade-up">
           Join programs that empower you with real skills, global language fluency, and a mindset for success.
         </p>
       </div>
 
       <div className="services-container">
-        {services.map((service, index) => {
-          const message = encodeURIComponent(
-            `Hello, I’m interested in ${service.title}. Please share more details.`
-          );
-          const fullLink = `${whatsappLink}${message}`;
-
-          return (
-            <div
-              className="service-box"
-              key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 150}
+        {services.map((service, index) => (
+          <div
+            className="service-box"
+            key={index}
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+          >
+            <div className="icon-circle">{service.icon}</div>
+            <h3 className="service-title">{service.title}</h3>
+            <ul className="service-details">
+              <li><strong>Duration:</strong> {service.duration}</li>
+              {service.days && <li><strong>Days:</strong> {service.days}</li>}
+              <li><strong>Discount:</strong> 50% for IIUI Community</li>
+            </ul>
+            <a
+              href={formLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="service-btn"
             >
-              <div className="icon-circle">{service.icon}</div>
-              <h3 className="service-title">{service.title}</h3>
-              <ul className="service-details">
-                <li><strong>Duration:</strong> {service.duration}</li>
-                {service.days && <li><strong>Days:</strong> {service.days}</li>}
-                <li><strong>Discount:</strong> 50% for IIUI Community</li>
-              </ul>
-              <a
-                href={fullLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="service-btn"
-              >
-                Get Started
-              </a>
-            </div>
-          );
-        })}
+              Get Started
+            </a>
+          </div>
+        ))}
       </div>
     </section>
   );

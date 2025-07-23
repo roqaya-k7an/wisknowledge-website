@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // ✅ Add toggle state
+  const [menuOpen, setMenuOpen] = useState(false); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,12 +22,10 @@ const Navbar = () => {
           <h1 className="nav-title">WisKnowledge</h1>
         </div>
 
-        {/* ✅ Hamburger icon */}
         <button className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
         </button>
 
-        {/* ✅ Menu with toggle */}
         <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
           <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
           <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
