@@ -1,4 +1,4 @@
-User-agent: *
+echo "User-agent: *
 Allow: /
 
-Sitemap: https://wisknowledge.com/sitemap.xml
+Sitemap: https://wisknowledge.com/sitemap.xml" > public/robots.txt
