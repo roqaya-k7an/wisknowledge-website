@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Testimonials.css";
+import { Helmet } from "react-helmet-async";   // ✅ import Helmet
 
 const testimonials = [
   {
@@ -31,15 +32,27 @@ export default function Testimonials() {
       className="testimonials-bg"
       id="testimonials"
       aria-labelledby="testimonials-heading"
-    ><title>WisKnowledge Success Stories – Real Testimonials</title>
-<meta name="description" content="Read real testimonials from students and parents about WisKnowledge IELTS coaching, summer camps, and visa consultancy support." />
+    >
+      {/* ✅ SEO tags with Helmet */}
+      <Helmet>
+        <title>WisKnowledge Success Stories – Real Testimonials</title>
+        <meta
+          name="description"
+          content="Read real testimonials from students and parents about WisKnowledge IELTS coaching, summer camps, and visa consultancy support."
+        />
+      </Helmet>
 
       <header>
-        <h2 id="testimonials-heading" className="testimonials-title" data-aos="fade-down">
+        <h2
+          id="testimonials-heading"
+          className="testimonials-title"
+          data-aos="fade-down"
+        >
           Real Stories, Real Impact
         </h2>
         <p className="testimonials-subtitle" data-aos="fade-up">
-          These aren’t just reviews — they’re journeys of transformation. Hear what our students and parents say about WisKnowledge.
+          These aren’t just reviews — they’re journeys of transformation. Hear
+          what our students and parents say about WisKnowledge.
         </p>
       </header>
 
@@ -53,10 +66,18 @@ export default function Testimonials() {
             itemScope
             itemType="https://schema.org/Review"
           >
-            <blockquote className="testimonial-message" itemProp="reviewBody">
+            <blockquote
+              className="testimonial-message"
+              itemProp="reviewBody"
+            >
               “{t.message}”
             </blockquote>
-            <p className="testimonial-name" itemProp="author" itemScope itemType="https://schema.org/Person">
+            <p
+              className="testimonial-name"
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Person"
+            >
               — <span itemProp="name">{t.name}</span>
             </p>
           </article>
