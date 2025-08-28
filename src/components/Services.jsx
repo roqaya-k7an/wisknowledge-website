@@ -13,6 +13,7 @@ const services = [
     duration: "4 weeks",
     days: "Mon – Thursday",
     price: "200",
+    discount: "50% for IIUI Community",
     icon: <FaBook aria-hidden="true" />,
   },
   {
@@ -21,6 +22,7 @@ const services = [
     duration: "90 days",
     days: "Mon – Thursday",
     price: "300",
+    discount: "50% for IIUI Community",
     icon: <FaChalkboardTeacher aria-hidden="true" />,
   },
   {
@@ -29,6 +31,7 @@ const services = [
     duration: "One or two days",
     days: null,
     price: "100",
+    discount: "50% for IIUI Community",
     icon: <FaCalendarAlt aria-hidden="true" />,
   },
   {
@@ -37,6 +40,7 @@ const services = [
     duration: "2 weeks or 20 days",
     days: "June, July",
     price: "250",
+    discount: "50% for IIUI Community",
     icon: <FaChild aria-hidden="true" />,
   },
 ];
@@ -46,32 +50,81 @@ export default function Services() {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Generate JSON-LD dynamically
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@graph": services.map((s) => ({
+  const provider = {
+    "@type": "Organization",
+    name: "WisKnowledge Academy",
+    url: "https://wisknowledge.com/",
+  };
+
+  // helper to create stable IDs for linking reviews -> courses
+  const slugify = (str) => str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+  // Build Course nodes
+  const courseNodes = services.map((s) => {
+    const id = `https://wisknowledge.com/#course-${slugify(s.title)}`;
+
+    return {
       "@type": "Course",
-      "name": s.title,
-      "description": s.description,
-      "provider": {
-        "@type": "Organization",
-        "name": "WisKnowledge Academy",
-        "url": "https://wisknowledge.com/"
-      },
-      "offers": {
+      "@id": id,
+      name: s.title,
+      description: s.description,
+      provider,
+      url: "https://wisknowledge.com/#services",
+      offers: {
         "@type": "Offer",
-        "price": s.price,
-        "priceCurrency": "PKR",
-        "url": formLink,
-        "availability": "https://schema.org/InStock"
+        price: s.price,
+        priceCurrency: "PKR",
+        url: formLink,
+        availability: "https://schema.org/InStock",
       },
-      "hasCourseInstance": {
+      hasCourseInstance: {
         "@type": "CourseInstance",
-        "courseMode": "Onsite",
-        "location": "WisKnowledge Academy, Islamabad, Pakistan",
-        "courseWorkload": s.days || s.duration
-      }
-    }))
+        name: `${s.title} - Session`,
+        description: s.description,
+        courseMode: "Onsite",
+        timeRequired: s.days ? `${s.duration} (${s.days})` : s.duration,
+        location: {
+          "@type": "Place",
+          name: "WisKnowledge Academy",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Islamabad",
+            addressCountry: "PK",
+          },
+        },
+      },
+    };
+  });
+
+  // Build Review nodes (ties each review to a specific Course via @id)
+  const reviews = [
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Student" },
+      reviewBody:
+        "Got my student visa through their consultancy. Got 7 band in IELTS. Very supportive team!",
+      itemReviewed: { "@id": "https://wisknowledge.com/#course-ielts-coaching" },
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Student" },
+      reviewBody:
+        "Scored 6.5 in IELTS and secured XYZ University admission—thanks WisKnowledge!",
+      itemReviewed: { "@id": "https://wisknowledge.com/#course-ielts-coaching" },
+    },
+    {
+      "@type": "Review",
+      author: { "@type": "Person", name: "Sir Jawad" },
+      reviewBody:
+        "I was impressed with WisKnowledge Summer Camp's engaging activities and qualified staff, who created a safe and supportive environment. My child enjoyed all the activities and formed new friendships. To improve, I suggest conducting it twice a year (Summer and Winter camp). Overall, I'm satisfied with the experience and would recommend the camp to others. The organizers were outstanding. Thank you for a memorable summer 2023 and 2024!",
+      itemReviewed: { "@id": "https://wisknowledge.com/#course-strategic-summer-camp-for-kids" },
+    },
+  ];
+
+  // Final graph
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [...courseNodes, ...reviews],
   };
 
   return (
@@ -98,7 +151,7 @@ export default function Services() {
             <ul className="service-details">
               <li><strong>Duration:</strong> {service.duration}</li>
               {service.days && <li><strong>Days:</strong> {service.days}</li>}
-              <li><strong>Discount:</strong> 50% for IIUI Community</li>
+              <li><strong>Discount:</strong> {service.discount}</li>
             </ul>
             <a
               href={formLink}
@@ -112,10 +165,11 @@ export default function Services() {
         ))}
       </div>
 
-      {/* JSON-LD schema injection */}
-      <script type="application/ld+json">
-        {JSON.stringify(courseSchema, null, 2)}
-      </script>
+      {/* JSON-LD schema injection (use dangerouslySetInnerHTML for reliability) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
     </section>
   );
 }
