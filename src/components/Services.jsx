@@ -10,8 +10,8 @@ const services = [
   {
     title: "IELTS Coaching",
     description: "IELTS coaching focused on Listening, Reading, Writing, and Speaking.",
-    duration: "4 weeks",
-    days: "Mon – Thursday",
+    duration: "P4W", // ISO 8601 4 weeks
+    days: "Mon – Thu",
     price: "200",
     discount: "50% for IIUI Community",
     icon: <FaBook aria-hidden="true" />,
@@ -19,8 +19,8 @@ const services = [
   {
     title: "Spoken English",
     description: "Improve fluency, vocabulary, and pronunciation with conversation practice.",
-    duration: "90 days",
-    days: "Mon – Thursday",
+    duration: "P90D", // ISO 8601 90 days
+    days: "Mon – Thu",
     price: "300",
     discount: "50% for IIUI Community",
     icon: <FaChalkboardTeacher aria-hidden="true" />,
@@ -28,7 +28,7 @@ const services = [
   {
     title: "Strategic Study Management Workshop",
     description: "Workshop teaching planning, note-taking, active recall, and exam strategy.",
-    duration: "1–2 days",
+    duration: "P2D", // 1–2 days simplified as 2 days
     days: null,
     price: "100",
     discount: "50% for IIUI Community",
@@ -37,7 +37,7 @@ const services = [
   {
     title: "Strategic Summer Camp for Kids",
     description: "Fun, safe summer program with workshops, creativity labs, and sports.",
-    duration: "2–3 weeks",
+    duration: "P3W", // 2–3 weeks simplified as 3 weeks
     days: "June, July",
     price: "250",
     discount: "50% for IIUI Community",
@@ -53,35 +53,35 @@ export default function Services() {
   const provider = {
     "@type": "Organization",
     name: "WisKnowledge Academy",
-    url: "https://wisknowledge-website.netlify.app/",
+    url: "https://wisknowledge.com/",
   };
 
   const slugify = (str) =>
     str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   const courseNodes = services.map((s) => {
-    const id = `https://wisknowledge-website.netlify.app/#course-${slugify(s.title)}`;
-
+    const id = `https://wisknowledge.com/#course-${slugify(s.title)}`;
     return {
       "@type": "Course",
       "@id": id,
       name: s.title,
       description: s.description,
       provider,
-      url: "https://wisknowledge-website.netlify.app/#services",
+      url: "https://wisknowledge.com/#services",
       offers: {
         "@type": "Offer",
         price: s.price,
         priceCurrency: "PKR",
         url: formLink,
-        availability: "https://schema.org/InStock", // ✅ fixed
+        availability: "https://schema.org/InStock",
+        category: "Education", // added missing category
       },
       hasCourseInstance: {
         "@type": "CourseInstance",
         name: `${s.title} - Session`,
         description: s.description,
         courseMode: "Onsite",
-        timeRequired: s.duration, // can later refine to ISO 8601
+        timeRequired: s.duration,
         schedule: {
           "@type": "Schedule",
           repeatFrequency: s.days || "Flexible",
@@ -126,7 +126,7 @@ export default function Services() {
             <div className="icon-circle">{service.icon}</div>
             <h3 className="service-title">{service.title}</h3>
             <ul className="service-details">
-              <li><strong>Duration:</strong> {service.duration}</li>
+              <li><strong>Duration:</strong> {service.duration.replace("P","").toLowerCase()}</li>
               {service.days && <li><strong>Days:</strong> {service.days}</li>}
               <li><strong>Discount:</strong> {service.discount}</li>
             </ul>
