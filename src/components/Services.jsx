@@ -56,10 +56,17 @@ export default function Services() {
     url: "https://wisknowledge.com/",
   };
 
-  // helper to create stable IDs for linking reviews -> courses
-  const slugify = (str) => str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const slugify = (str) =>
+    str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-  // Build Course nodes
+  const categoryFor = (title) => {
+    if (/ielts|spoken english/i.test(title)) return "Language Course";
+    if (/workshop/i.test(title)) return "Workshop";
+    if (/camp/i.test(title)) return "Kids Program";
+    return "Course";
+  };
+
+  // Build Course nodes (fixes: category + courseSchedule + availability format)
   const courseNodes = services.map((s) => {
     const id = `https://wisknowledge.com/#course-${slugify(s.title)}`;
 
@@ -75,14 +82,16 @@ export default function Services() {
         price: s.price,
         priceCurrency: "PKR",
         url: formLink,
-        availability: "https://schema.org/InStock",
+        availability: "InStock", // ✅ no URL
+        category: categoryFor(s.title), // ✅ required in your GSC report
       },
       hasCourseInstance: {
         "@type": "CourseInstance",
         name: `${s.title} - Session`,
         description: s.description,
         courseMode: "Onsite",
-        timeRequired: s.days ? `${s.duration} (${s.days})` : s.duration,
+        timeRequired: s.duration, // keep your wording
+        courseSchedule: s.days || "Flexible", // ✅ satisfies Google requirement
         location: {
           "@type": "Place",
           name: "WisKnowledge Academy",
@@ -96,39 +105,14 @@ export default function Services() {
     };
   });
 
-  // Build Review nodes (ties each review to a specific Course via @id)
-  const reviews = [
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Student" },
-      reviewBody:
-        "Got my student visa through their consultancy. Got 7 band in IELTS. Very supportive team!",
-      itemReviewed: { "@id": "https://wisknowledge.com/#course-ielts-coaching" },
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Student" },
-      reviewBody:
-        "Scored 6.5 in IELTS and secured XYZ University admission—thanks WisKnowledge!",
-      itemReviewed: { "@id": "https://wisknowledge.com/#course-ielts-coaching" },
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Sir Jawad" },
-      reviewBody:
-        "I was impressed with WisKnowledge Summer Camp's engaging activities and qualified staff, who created a safe and supportive environment. My child enjoyed all the activities and formed new friendships. To improve, I suggest conducting it twice a year (Summer and Winter camp). Overall, I'm satisfied with the experience and would recommend the camp to others. The organizers were outstanding. Thank you for a memorable summer 2023 and 2024!",
-      itemReviewed: { "@id": "https://wisknowledge.com/#course-strategic-summer-camp-for-kids" },
-    },
-  ];
-
-  // Final graph
   const schema = {
     "@context": "https://schema.org",
-    "@graph": [...courseNodes, ...reviews],
-  }
+    "@graph": [...courseNodes],
+  };
 
-return (
-  <section className="services-wrapper" id="services">      <div className="services-intro">
+  return (
+    <section className="services-wrapper" id="services">
+      <div className="services-intro">
         <h2 className="services-heading" data-aos="fade-down">
           Shape Your Future with Confidence
         </h2>
@@ -164,7 +148,7 @@ return (
         ))}
       </div>
 
-      {/* JSON-LD schema injection (use dangerouslySetInnerHTML for reliability) */}
+      {/* JSON-LD schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
