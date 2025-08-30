@@ -125,11 +125,10 @@ export default function Services() {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [...courseNodes, ...reviews],
-  };
+  }
 
-  return (
-    <section className="services-wrapper" id="services">
-      <div className="services-intro">
+return (
+  <section className="services-wrapper" id="services">      <div className="services-intro">
         <h2 className="services-heading" data-aos="fade-down">
           Shape Your Future with Confidence
         </h2>
