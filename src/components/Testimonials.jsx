@@ -41,7 +41,7 @@ export default function Testimonials() {
         "@type": "Person",
         "name": t.name,
       },
-      "datePublished": "2024-08-01", // ❗ replace with real dates if available
+      "datePublished": "2025-08-30", // ❗ replace with real dates if available
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": "5",
