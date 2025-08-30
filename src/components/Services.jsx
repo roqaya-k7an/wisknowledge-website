@@ -28,7 +28,7 @@ const services = [
   {
     title: "Strategic Study Management Workshop",
     description: "Workshop teaching planning, note-taking, active recall, and exam strategy.",
-    duration: "One or two days",
+    duration: "1–2 days",
     days: null,
     price: "100",
     discount: "50% for IIUI Community",
@@ -37,7 +37,7 @@ const services = [
   {
     title: "Strategic Summer Camp for Kids",
     description: "Fun, safe summer program with workshops, creativity labs, and sports.",
-    duration: "2 weeks or 20 days",
+    duration: "2–3 weeks",
     days: "June, July",
     price: "250",
     discount: "50% for IIUI Community",
@@ -53,22 +53,14 @@ export default function Services() {
   const provider = {
     "@type": "Organization",
     name: "WisKnowledge Academy",
-    url: "https://wisknowledge.com/",
+    url: "https://wisknowledge-website.netlify.app/",
   };
 
   const slugify = (str) =>
     str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-  const categoryFor = (title) => {
-    if (/ielts|spoken english/i.test(title)) return "Language Course";
-    if (/workshop/i.test(title)) return "Workshop";
-    if (/camp/i.test(title)) return "Kids Program";
-    return "Course";
-  };
-
-  // Build Course nodes (fixes: category + courseSchedule + availability format)
   const courseNodes = services.map((s) => {
-    const id = `https://wisknowledge.com/#course-${slugify(s.title)}`;
+    const id = `https://wisknowledge-website.netlify.app/#course-${slugify(s.title)}`;
 
     return {
       "@type": "Course",
@@ -76,22 +68,24 @@ export default function Services() {
       name: s.title,
       description: s.description,
       provider,
-      url: "https://wisknowledge.com/#services",
+      url: "https://wisknowledge-website.netlify.app/#services",
       offers: {
         "@type": "Offer",
         price: s.price,
         priceCurrency: "PKR",
         url: formLink,
-        availability: "InStock", // ✅ no URL
-        category: categoryFor(s.title), // ✅ required in your GSC report
+        availability: "https://schema.org/InStock", // ✅ fixed
       },
       hasCourseInstance: {
         "@type": "CourseInstance",
         name: `${s.title} - Session`,
         description: s.description,
         courseMode: "Onsite",
-        timeRequired: s.duration, // keep your wording
-        courseSchedule: s.days || "Flexible", // ✅ satisfies Google requirement
+        timeRequired: s.duration, // can later refine to ISO 8601
+        schedule: {
+          "@type": "Schedule",
+          repeatFrequency: s.days || "Flexible",
+        },
         location: {
           "@type": "Place",
           name: "WisKnowledge Academy",
