@@ -15,7 +15,7 @@
 
 This is the official website for **WisKnowledge Consultancy**, a fully responsive single-page web application built from scratch to showcase the organization's educational programs and digital services with a clean, modern look. The site emphasizes fast load times, accessibility, and search-engine visibility.
 
-The project was guided by **Dr. Abdul Fareed Brohi** — an academic, researcher, and IELTS Trainer at WisKnowledge Consultancy and International Islamic University Islamabad (IIUI) — who mentored the work and requested a professional online presence for the institute. I designed and developed the entire site independently — from layout and components to deployment.
+I designed and developed the entire site independently — from layout and components to deployment — under the supervision of **Dr. Abdul Fareed Brohi**.
 
 > Built solo as a hands-on training project during my time at **WisKnowledge Consultancy**, taking the website from concept to a live, deployed product.
 
