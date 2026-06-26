@@ -7,7 +7,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwindcss&logoColor=white)
 ![Netlify](https://img.shields.io/badge/Deployed_on-Netlify-00C7B7?logo=netlify&logoColor=white)
 
-🔗 **Live site:** [https://wisknowledge.com](https://wisknowledge.com)
+🔗 **Live site:** [https://wisknowledge-website.netlify.app](https://wisknowledge-website.netlify.app)
 
 ---
 
@@ -65,6 +65,8 @@ npm run dev
 ```
 
 The app will be available at `http://localhost:5173`.
+
+> 🌐 **Deployed site:** [https://wisknowledge-website.netlify.app](https://wisknowledge-website.netlify.app)
 
 ### Available Scripts
 
