@@ -96,8 +96,9 @@ wisknowledge-website/
 
 ## 👩‍💻 Author
 
-**Roqaya K7an**
+**Ruqayya Khan**
 - GitHub: [@roqaya-k7an](https://github.com/roqaya-k7an)
+- LinkedIn: [Ruqayya Khan](https://www.linkedin.com/in/ruqayya-khan-886a28217)
 
 ---
 
