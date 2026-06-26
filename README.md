@@ -13,9 +13,11 @@
 
 ## 📖 Overview
 
-A fully responsive, single-page marketing website built from scratch to present WisKnowledge's programs and services with a clean, modern look. The site emphasizes fast load times, accessibility, and search-engine visibility.
+This is the official website for **WisKnowledge Consultancy**, a fully responsive single-page web application built from scratch to showcase the organization's educational programs and digital services with a clean, modern look. The site emphasizes fast load times, accessibility, and search-engine visibility.
 
-> Built solo as a hands-on training project during my internship at **WisKnowledge Consultancy**.
+The project was commissioned by **Dr. Abdul Fareed Brohi**, founder of WisKnowledge Consultancy, who requested a professional online presence for the institute. I designed and developed the entire site independently — from layout and components to deployment.
+
+> Built solo as a hands-on training project during my time at **WisKnowledge Consultancy**, taking the website from concept to a live, deployed product.
 
 ## ✨ Features
 
